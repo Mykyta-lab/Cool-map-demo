@@ -7,7 +7,6 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="mp:graph-query" content="src=graphql/prefetch.gql, query=GetModelPrefetch">
   <style>
     body {
       width: 100%;
@@ -18,7 +17,7 @@
       overflow: hidden;
       font-family: 'Roboto';
     }
-    #app-container {
+    section {
       display: flex;
       flex-direction: column;
 
@@ -83,12 +82,11 @@
       <div class='loading-label'>Presented by</div>
       <div class='subheader'></div>
     </h2>
-    <div id='loading-powered-by' style="display: none">
+    <div id='loading-powered-by'>
       <div class='loading-label'>Powered by</div>
       <img id='loading-mp-logo'>
     </div>
   </div>
-  <div id="react-render-root"></div>
 </main>
 
 </section>
@@ -97,13 +95,13 @@
 <script src='js/showcase.js'></script>
 <script>
   var detailObject = {
-    config: {"apiHost":"https://my.matterport.com","pointerPreventDefault":false,"disableMobileRedirect":true}
+    config: {"apiHost":"https://my.matterport.com","pointerPreventDefault":false}
   };
 
   if (mpBrowserCheck.supported()) {
     window.dispatchEvent(new CustomEvent('app-start', { detail: detailObject }));
   } else {
-    mpBrowserCheck.displayErrorPage('showcase');
+    mpBrowserCheck.displayErrorPage();
   }
 </script>
 </body>
